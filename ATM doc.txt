@@ -1,0 +1,750 @@
+ATM Management System Using Java and DSA
+1. Introduction
+
+An ATM (Automated Teller Machine) Management System is a software system designed to simulate and manage the basic operations performed through an ATM. The system allows users to access their bank accounts and perform operations such as checking balance, withdrawing money, depositing money, transferring money, and changing their PIN.
+
+The project can be developed using Java and Data Structures and Algorithms (DSA) concepts. Java provides the programming language and object-oriented features, while DSA helps in organizing, storing, searching, and managing ATM-related data efficiently.
+
+This project is mainly intended for understanding how real-world banking operations can be represented using programming concepts and data structures.
+
+2. Objectives
+
+The main objectives of the ATM Management System are:
+
+To provide a simple representation of ATM operations.
+To allow users to securely access their accounts using account details and PIN.
+To perform deposit and withdrawal operations.
+To display the current account balance.
+To maintain transaction records.
+To support money transfer between accounts.
+To demonstrate the use of Java and DSA concepts.
+To improve understanding of data organization and efficient searching.
+3. Scope of the System
+
+The ATM Management System can support the following major functions:
+
+User authentication
+Account management
+Balance inquiry
+Cash withdrawal
+Cash deposit
+Fund transfer
+PIN change
+Transaction history
+Account search
+Transaction management
+ATM cash management
+
+The system can be designed as a console-based application without requiring a graphical user interface or database.
+
+4. Technologies Used
+Programming Language
+
+Java is used as the primary programming language because it supports object-oriented programming, exception handling, collections, and other features required for the project.
+
+Data Structures and Algorithms
+
+The project can use Java-based implementations of:
+
+Arrays
+ArrayList
+Linked List
+Stack
+Queue
+HashMap
+Searching algorithms
+Sorting algorithms
+
+Only the data structures required for a particular operation need to be used.
+
+5. System Users
+
+The main user of the system is the ATM customer.
+
+A customer should be able to:
+
+Enter account information.
+Enter a PIN.
+Authenticate with the system.
+Select an operation.
+Complete the selected transaction.
+View transaction details.
+Exit the system securely.
+
+An administrator can optionally be included to manage accounts and ATM cash information.
+
+6. Main Modules
+6.1 Authentication Module
+
+The authentication module verifies whether the customer is authorized to access an account.
+
+The customer provides:
+
+Account number
+PIN
+
+The system searches for the corresponding account and verifies the PIN.
+
+A HashMap can be used to associate account numbers with customer account objects, allowing efficient average-case lookup.
+
+6.2 Account Management Module
+
+This module stores and manages customer information.
+
+An account may contain:
+
+Account number
+Customer name
+PIN
+Account balance
+Account type
+Transaction history
+
+Each account can be represented conceptually as an object.
+
+6.3 Balance Inquiry Module
+
+The balance inquiry module displays the amount of money currently available in the customer's account.
+
+The system retrieves the account using the account number and accesses its balance.
+
+This operation generally has constant-time access after the account has been located.
+
+6.4 Cash Withdrawal Module
+
+The withdrawal module allows customers to withdraw money from their accounts.
+
+The system should verify:
+
+Whether the requested amount is valid.
+Whether the account has sufficient balance.
+Whether the ATM has sufficient cash.
+Whether the withdrawal amount follows the required denomination rules.
+
+After successful validation, the account balance and ATM cash balance are updated.
+
+6.5 Cash Deposit Module
+
+The deposit module allows a customer to add money to their account.
+
+The system receives the deposit amount, validates it, and increases the account balance.
+
+A transaction record is also created for the deposit.
+
+6.6 Fund Transfer Module
+
+The fund transfer module allows money to be transferred from one account to another.
+
+The system should verify:
+
+Sender account
+Receiver account
+Transfer amount
+Sender's available balance
+Validity of the receiver account
+
+After successful validation, the amount is deducted from the sender and added to the receiver.
+
+6.7 PIN Change Module
+
+The PIN change module allows a customer to update their existing PIN.
+
+The system should verify the existing PIN before allowing the customer to create a new one.
+
+The new PIN should satisfy the system's security requirements.
+
+6.8 Transaction History Module
+
+This module maintains records of transactions performed by the customer.
+
+A transaction may contain:
+
+Transaction ID
+Transaction type
+Amount
+Date and time
+Account number
+Transaction status
+
+A Linked List or ArrayList can be used to maintain transaction records.
+
+7. Data Structures Used
+7.1 Array
+
+An array can be used when the number of elements is fixed or when direct index-based access is required.
+
+For example, ATM cash denominations can be represented using an array.
+
+Advantages:
+
+Simple structure
+Fast access using index
+Low overhead
+
+Limitation:
+
+Fixed size
+7.2 ArrayList
+
+An ArrayList can be used to store a collection of accounts or transactions.
+
+It provides dynamic sizing and allows elements to be accessed using indexes.
+
+For example:
+
+List of customers
+List of transactions
+List of ATM operations
+
+Average access by index is efficient, while inserting or removing elements in the middle may require shifting elements.
+
+7.3 Linked List
+
+A Linked List can be used for maintaining transaction history.
+
+Each node contains transaction information and a reference to another node.
+
+Advantages:
+
+Dynamic size
+Efficient insertion and deletion when the appropriate node/reference is available
+
+It is useful when transactions are frequently added to a history structure.
+
+7.4 Stack
+
+A Stack follows the LIFO (Last In, First Out) principle.
+
+It can be used to represent recent operations or support an undo-like concept in a theoretical ATM system.
+
+For example, the most recently performed transaction can be kept at the top of a stack.
+
+7.5 Queue
+
+A Queue follows the FIFO (First In, First Out) principle.
+
+It can be used to represent customers waiting for ATM services or pending transaction requests.
+
+The first request inserted into the queue is processed first.
+
+7.6 HashMap
+
+HashMap is one of the most useful structures for this project.
+
+It can store:
+
+Account Number → Account Object
+
+This allows the system to quickly locate an account using its account number.
+
+The average time complexity for searching, inserting, and removing an element in a HashMap is generally O(1), assuming good hashing and normal conditions.
+
+8. Algorithms Used
+8.1 Searching
+
+Searching is required to locate an account or transaction.
+
+Linear Search can be used when accounts are stored in an unsorted list.
+
+Time complexity:
+
+Best case: O(1)
+Worst case: O(n)
+
+If account numbers are stored in a HashMap, searching can generally be performed in average O(1) time.
+
+8.2 Sorting
+
+Sorting can be used when transaction records need to be displayed according to:
+
+Transaction amount
+Date
+Transaction ID
+Account number
+
+Java's sorting facilities can be used conceptually for this purpose.
+
+Depending on the algorithm, sorting may have a complexity such as O(n log n).
+
+9. Object-Oriented Design
+
+The system can be divided into multiple classes.
+
+Possible classes include:
+
+Account
+
+Represents a customer's bank account.
+
+Possible attributes:
+
+Account number
+Customer name
+PIN
+Balance
+Customer
+
+Represents customer information.
+
+Possible attributes:
+
+Customer ID
+Name
+Contact information
+Account details
+Transaction
+
+Represents an individual banking transaction.
+
+Possible attributes:
+
+Transaction ID
+Transaction type
+Amount
+Date and time
+Status
+ATM
+
+Represents the ATM machine.
+
+Possible responsibilities:
+
+Authentication
+Withdrawal
+Deposit
+Balance inquiry
+Transaction processing
+Cash management
+Bank
+
+Represents the collection of customer accounts and banking operations.
+
+PROGRAM:
+
+
+package javawithDSA;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ATMManagementSystem {
+
+    static double balance = 10000.00;
+    static int pin = 1234;
+
+    static ArrayList<String> transactions = new ArrayList<String>();
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        System.out.println("======================================");
+        System.out.println("       ATM MANAGEMENT SYSTEM");
+        System.out.println("======================================");
+
+        // PIN LOGIN
+        int attempts = 0;
+        boolean loginSuccess = false;
+
+        while (attempts < 3) {
+
+            System.out.print("\nEnter your PIN: ");
+            int enteredPin = scanner.nextInt();
+
+            if (enteredPin == pin) {
+                loginSuccess = true;
+                System.out.println("\nLogin Successful!");
+                break;
+            } else {
+                attempts++;
+                System.out.println("Incorrect PIN!");
+
+                if (attempts < 3) {
+                    System.out.println("Attempts remaining: " + (3 - attempts));
+                }
+            }
+        }
+
+        if (!loginSuccess) {
+            System.out.println("\nYour card has been blocked.");
+            scanner.close();
+            return;
+        }
+
+        // ATM MENU
+        int choice;
+
+        do {
+
+            System.out.println("\n======================================");
+            System.out.println("              ATM MENU");
+            System.out.println("======================================");
+            System.out.println("1. Check Balance");
+            System.out.println("2. Deposit Money");
+            System.out.println("3. Withdraw Money");
+            System.out.println("4. Transaction History");
+            System.out.println("5. Change PIN");
+            System.out.println("6. Exit");
+            System.out.println("======================================");
+
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    checkBalance();
+                    break;
+
+                case 2:
+                    deposit();
+                    break;
+
+                case 3:
+                    withdraw();
+                    break;
+
+                case 4:
+                    showTransactions();
+                    break;
+
+                case 5:
+                    changePin();
+                    break;
+
+                case 6:
+                    System.out.println("\nThank you for using ATM!");
+                    System.out.println("Please collect your card.");
+                    break;
+
+                default:
+                    System.out.println("\nInvalid choice! Please try again.");
+            }
+
+        } while (choice != 6);
+
+        scanner.close();
+    }
+
+    // CHECK BALANCE
+    public static void checkBalance() {
+
+        System.out.println("\n--------------------------------------");
+        System.out.println("           ACCOUNT BALANCE");
+        System.out.println("--------------------------------------");
+
+        System.out.printf("Current Balance: Rs. %.2f%n", balance);
+    }
+
+    // DEPOSIT
+    public static void deposit() {
+
+        System.out.println("\n--------------------------------------");
+        System.out.println("            DEPOSIT MONEY");
+        System.out.println("--------------------------------------");
+
+        System.out.print("Enter amount: Rs. ");
+        double amount = scanner.nextDouble();
+
+        if (amount > 0) {
+
+            balance = balance + amount;
+
+            transactions.add("Deposited: Rs. " + amount);
+
+            System.out.println("\nDeposit Successful!");
+            System.out.println("Amount Deposited: Rs. " + amount);
+            System.out.println("New Balance: Rs. " + balance);
+
+        } else {
+
+            System.out.println("Invalid amount!");
+        }
+    }
+
+    // WITHDRAW
+    public static void withdraw() {
+
+        System.out.println("\n--------------------------------------");
+        System.out.println("           WITHDRAW MONEY");
+        System.out.println("--------------------------------------");
+
+        System.out.print("Enter amount: Rs. ");
+        double amount = scanner.nextDouble();
+
+        if (amount <= 0) {
+
+            System.out.println("Invalid amount!");
+
+        } else if (amount > balance) {
+
+            System.out.println("Insufficient Balance!");
+            System.out.println("Available Balance: Rs. " + balance);
+
+        } else {
+
+            balance = balance - amount;
+
+            transactions.add("Withdrawn: Rs. " + amount);
+
+            System.out.println("\nWithdrawal Successful!");
+            System.out.println("Please collect your cash.");
+            System.out.println("Amount Withdrawn: Rs. " + amount);
+            System.out.println("Remaining Balance: Rs. " + balance);
+        }
+    }
+
+    // TRANSACTION HISTORY
+    public static void showTransactions() {
+
+        System.out.println("\n--------------------------------------");
+        System.out.println("        TRANSACTION HISTORY");
+        System.out.println("--------------------------------------");
+
+        if (transactions.isEmpty()) {
+
+            System.out.println("No transactions found.");
+
+        } else {
+
+            for (int i = 0; i < transactions.size(); i++) {
+
+                System.out.println(
+                    (i + 1) + ". " + transactions.get(i)
+                );
+            }
+        }
+    }
+
+    // CHANGE PIN
+    public static void changePin() {
+
+        System.out.println("\n--------------------------------------");
+        System.out.println("              CHANGE PIN");
+        System.out.println("--------------------------------------");
+
+        System.out.print("Enter current PIN: ");
+        int currentPin = scanner.nextInt();
+
+        if (currentPin != pin) {
+
+            System.out.println("Incorrect PIN!");
+
+            return;
+        }
+
+        System.out.print("Enter new 4-digit PIN: ");
+        int newPin = scanner.nextInt();
+
+        if (newPin >= 1000 && newPin <= 9999) {
+
+            pin = newPin;
+
+            transactions.add("PIN changed successfully");
+
+            System.out.println("PIN changed successfully!");
+
+        } else {
+
+            System.out.println("PIN must contain exactly 4 digits.");
+        }
+    }
+}
+
+
+OUTPUT:
+
+
+======================================
+       ATM MANAGEMENT SYSTEM
+======================================
+
+Enter your PIN: 1234
+
+Login Successful!
+
+======================================
+              ATM MENU
+======================================
+1. Check Balance
+2. Deposit Money
+3. Withdraw Money
+4. Transaction History
+5. Change PIN
+6. Exit
+======================================
+Enter your choice:
+
+
+        10. ATM Transaction Flow
+
+The general flow of the system is:
+
+Start the ATM system.
+Display the welcome message.
+Ask the user for account number.
+Verify the account.
+Ask the user for the PIN.
+Validate the PIN.
+Display the ATM menu.
+User selects an operation.
+System validates the requested operation.
+Transaction is performed.
+Account and transaction data are updated.
+Transaction result is displayed.
+User can perform another operation or exit.
+System ends the session securely.
+11. Withdrawal Algorithm — Theory
+
+The withdrawal process can follow these steps:
+
+Receive the withdrawal amount.
+Check whether the amount is positive.
+Check whether the account has sufficient balance.
+Check whether the ATM has enough cash.
+Determine whether the amount can be provided using available denominations.
+Deduct the amount from the account.
+Reduce the corresponding ATM cash.
+Create a withdrawal transaction.
+Display the successful transaction result.
+
+If any validation fails, the withdrawal should be rejected without modifying the account balance.
+
+12. Deposit Algorithm — Theory
+
+The deposit process consists of:
+
+Receive the deposit amount.
+Validate the amount.
+Add the amount to the customer's account balance.
+Update ATM cash information if applicable.
+Create a deposit transaction.
+Display the updated balance.
+13. Fund Transfer Algorithm — Theory
+
+The transfer process consists of:
+
+Identify the sender account.
+Identify the receiver account.
+Verify both accounts.
+Validate the transfer amount.
+Check the sender's available balance.
+Deduct the amount from the sender.
+Add the amount to the receiver.
+Create transaction records.
+Display the transfer status.
+
+The system should ensure that an incomplete transfer does not result in incorrect balances.
+
+14. Transaction History
+
+Every successful transaction should be recorded.
+
+For example, transaction types can include:
+
+DEPOSIT
+WITHDRAWAL
+TRANSFER
+BALANCE_INQUIRY
+PIN_CHANGE
+
+A transaction history allows the customer to review previous activities.
+
+A Linked List or ArrayList can be used depending on the requirements.
+
+15. Exception Handling
+
+Java exception handling can be used to prevent the system from terminating unexpectedly.
+
+Possible situations include:
+
+Invalid account number
+Invalid PIN
+Invalid amount
+Insufficient balance
+Insufficient ATM cash
+Invalid menu selection
+Invalid input type
+
+The system should handle these situations and provide appropriate messages instead of crashing.
+
+16. Security Considerations
+
+Although this is a theoretical DSA-based project, security is an important part of an ATM system.
+
+Important considerations include:
+
+PIN verification
+Limited login attempts
+Session termination after inactivity
+Hiding sensitive information
+Validating all user inputs
+Preventing unauthorized account access
+Avoiding storage of sensitive information in plain text in a real system
+
+For an academic project, PIN validation can be demonstrated, while a real banking system would require much stronger security mechanisms.
+
+17. Time Complexity
+
+The efficiency of the system depends on the selected data structures.
+
+Operation	Data Structure	Average/Typical Complexity
+Account search	HashMap	O(1) average
+Account insertion	HashMap	O(1) average
+Account deletion	HashMap	O(1) average
+List access	ArrayList	O(1)
+List search	ArrayList	O(n)
+Linked List search	Linked List	O(n)
+Add at end	ArrayList	O(1) amortized
+Add at beginning	Linked List	O(1)
+Stack push	Stack	O(1)
+Stack pop	Stack	O(1)
+Queue insertion	Queue	O(1)
+Queue deletion	Queue	O(1)
+18. Advantages
+
+The ATM Management System provides the following advantages:
+
+Simple representation of banking operations.
+Demonstrates practical use of Java.
+Demonstrates multiple DSA concepts.
+Provides efficient account searching using HashMap.
+Maintains transaction records.
+Supports modular system design.
+Helps students understand object-oriented programming.
+Helps analyze time complexity.
+19. Limitations
+
+A basic academic implementation may have some limitations:
+
+It may not use a real database.
+It may not connect to an actual banking network.
+Security may be simplified.
+ATM hardware is not actually controlled.
+Multiple ATM machines may not be synchronized.
+Real-world banking regulations are not implemented.
+20. Future Enhancements
+
+The project can be extended by adding:
+
+Database connectivity
+Graphical User Interface
+Multiple ATM support
+Admin management
+Receipt generation
+Account statement generation
+Transaction notifications
+Improved authentication
+Encryption
+Multi-factor authentication
+Daily withdrawal limits
+ATM cash denomination management
+Multiple bank support
+21. Conclusion
+
+The ATM Management System using Java and DSA is a useful academic project for understanding how data structures and algorithms can be applied to a real-world problem.
+
+Java can be used to implement the different system components, while structures such as ArrayList, Linked List, Stack, Queue, and HashMap can organize and process information efficiently.
+
+Among these structures, HashMap is particularly useful for quick account lookup, while lists can be used for storing transaction records. Searching, sorting, validation, and transaction-processing algorithms demonstrate how DSA concepts contribute to the efficiency of the system.
+
+Overall, the project provides practical knowledge of Java, Object-Oriented Programming, Data Structures, Algorithms, time complexity, and system design.
